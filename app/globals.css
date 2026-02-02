@@ -231,3 +231,29 @@ html {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+
+/* Hide ConvertKit floating forms */
+.formkit-slide-in,
+.formkit-sticky-bar,
+[data-format="slide-in"],
+[data-format="sticky-bar"],
+div[style*="position: fixed"][style*="bottom"],
+div[style*="position: fixed"][style*="top"],
+.seva-form[data-format="slide-in"],
+.seva-form[data-format="sticky-bar"],
+iframe[src*="convertkit"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Ensure ConvertKit popups are hidden */
+iframe[src*="convertkit"],
+div[style*="convertkit"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}

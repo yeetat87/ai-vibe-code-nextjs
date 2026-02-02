@@ -1,13 +1,56 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, FormEvent, useEffect } from 'react'
 
 export default function Hero() {
-  const [submitted, setSubmitted] = useState(false)
+  const [email, setEmail] = useState('')
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [message, setMessage] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    // Load ConvertKit script
+    const script = document.createElement('script')
+    script.async = true
+    script.setAttribute('data-uid', '033d6e952c')
+    script.src = 'https://aicapitol.kit.com/033d6e952c/index.js'
+    document.head.appendChild(script)
+  }, [])
+
+  const handleEmailSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
+    setStatus('loading')
+
+    try {
+      const formData = new FormData()
+      formData.append('email_address', email)
+
+      const response = await fetch(
+        'https://app.convertkit.com/forms/9009438/subscriptions',
+        {
+          method: 'POST',
+          body: formData,
+          headers: {
+            Accept: 'application/json',
+          },
+        }
+      )
+
+      if (response.ok) {
+        setStatus('success')
+        setMessage('Check your inbox for access.')
+        setEmail('')
+        setTimeout(() => {
+          setStatus('idle')
+          setMessage('')
+        }, 5000)
+      } else {
+        setStatus('error')
+        setMessage('Something went wrong. Please try again.')
+      }
+    } catch (error) {
+      setStatus('error')
+      setMessage('Something went wrong. Please try again.')
+    }
   }
 
   return (
@@ -31,23 +74,30 @@ export default function Hero() {
           Tools. Prompts. Techniques. All in one place.
         </p>
 
-        {!submitted ? (
+        {status !== 'success' ? (
           <div className="max-w-lg mx-auto mb-6 float-in-3 px-2 sm:px-0">
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row sm:relative gap-3 sm:gap-0">
+            <form onSubmit={handleEmailSubmit} className="flex flex-col sm:flex-row sm:relative gap-3 sm:gap-0">
               <input
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
                 required
-                className="w-full px-5 sm:px-6 py-4 sm:py-5 sm:pr-36 rounded-xl sm:rounded-2xl bg-slate-900/80 border border-cyan-500/15 placeholder-slate-500 text-white focus:outline-none focus:border-cyan-500/30 transition-all"
+                disabled={status === 'loading'}
+                className="w-full px-5 sm:px-6 py-4 sm:py-5 sm:pr-36 rounded-xl sm:rounded-2xl bg-slate-900/80 border border-cyan-500/15 placeholder-slate-500 text-white focus:outline-none focus:border-cyan-500/30 transition-all disabled:opacity-50"
               />
               <button
                 type="submit"
-                className="sm:absolute sm:right-2 sm:top-1/2 sm:-translate-y-1/2 btn-glow px-5 py-3 sm:py-3 rounded-xl font-semibold text-white text-sm"
+                disabled={status === 'loading'}
+                className="sm:absolute sm:right-2 sm:top-1/2 sm:-translate-y-1/2 btn-glow px-5 py-3 sm:py-3 rounded-xl font-semibold text-white text-sm disabled:opacity-50"
               >
-                Get Access
+                {status === 'loading' ? 'Submitting...' : 'Get Access'}
               </button>
             </form>
             <p className="text-slate-500 text-xs sm:text-sm mt-3">Join 2,847 developers. 100% free.</p>
+            {status === 'error' && (
+              <p className="text-red-400 text-xs sm:text-sm mt-2">{message}</p>
+            )}
           </div>
         ) : (
           <div className="max-w-md mx-auto float-in-3">
@@ -58,7 +108,7 @@ export default function Hero() {
                 </svg>
               </div>
               <h3 className="text-xl font-semibold mb-2">You&apos;re in!</h3>
-              <p className="text-slate-400">Check your inbox for access.</p>
+              <p className="text-slate-400">{message}</p>
             </div>
           </div>
         )}

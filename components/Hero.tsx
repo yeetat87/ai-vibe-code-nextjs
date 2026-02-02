@@ -37,7 +37,7 @@ export default function Hero() {
 
       if (response.ok) {
         setStatus('success')
-        setMessage('Check your inbox for access.')
+        setMessage('')
         setEmail('')
         setTimeout(() => {
           setStatus('idle')

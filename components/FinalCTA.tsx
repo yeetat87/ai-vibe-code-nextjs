@@ -37,7 +37,7 @@ export default function FinalCTA() {
 
       if (response.ok) {
         setStatus('success')
-        setMessage('Success! Check your email to confirm.')
+        setMessage('')
         setEmail('')
         setTimeout(() => {
           setStatus('idle')

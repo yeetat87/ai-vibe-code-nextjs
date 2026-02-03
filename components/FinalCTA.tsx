@@ -7,14 +7,7 @@ export default function FinalCTA() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [message, setMessage] = useState('')
 
-  useEffect(() => {
-    // Load ConvertKit script
-    const script = document.createElement('script')
-    script.async = true
-    script.setAttribute('data-uid', '033d6e952c')
-    script.src = 'https://aicapitol.kit.com/033d6e952c/index.js'
-    document.head.appendChild(script)
-  }, [])
+
 
   const handleEmailSubmit = async (e: FormEvent) => {
     e.preventDefault()

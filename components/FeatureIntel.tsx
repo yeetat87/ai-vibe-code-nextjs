@@ -3,8 +3,8 @@ export default function FeatureIntel() {
     <section className="px-4 sm:px-6 py-16 sm:py-24">
       <div className="max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
-          <div className="reveal-left">
-            <div className="flex items-center gap-2 text-cyan-400 text-xs tracking-widest mb-4">
+          <div className="reveal-left text-center lg:text-left">
+            <div className="flex items-center gap-2 text-cyan-400 text-xs tracking-widest mb-4 justify-center lg:justify-start">
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
                 <polyline points="17 6 23 6 23 12"></polyline>
@@ -19,7 +19,7 @@ export default function FeatureIntel() {
             <p className="text-slate-400 text-lg mb-6 leading-relaxed">
               Get updates on new AI tools and features before everyone else. While others are catching up, you&apos;re already shipping.
             </p>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
               <span className="px-3 py-1.5 rounded-full glass-light text-sm text-slate-300">Real-time alerts</span>
               <span className="px-3 py-1.5 rounded-full glass-light text-sm text-slate-300">Beta access</span>
               <span className="px-3 py-1.5 rounded-full glass-light text-sm text-slate-300">Insider tips</span>

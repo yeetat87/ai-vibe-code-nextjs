@@ -38,8 +38,8 @@ export default function FeatureWorkflows() {
               </div>
             </div>
           </div>
-          <div className="order-1 lg:order-2 reveal-right">
-            <div className="flex items-center gap-2 text-cyan-400 text-xs tracking-widest mb-4">
+          <div className="order-1 lg:order-2 reveal-right text-center lg:text-left">
+            <div className="flex items-center gap-2 text-cyan-400 text-xs tracking-widest mb-4 justify-center lg:justify-start">
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
                 <line x1="3" y1="9" x2="21" y2="9"></line>
@@ -55,7 +55,7 @@ export default function FeatureWorkflows() {
             <p className="text-slate-400 text-lg mb-6 leading-relaxed">
               Step-by-step workflows used by engineers at top startups. Go from idea to deployed feature in hours, not weeks.
             </p>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
               <span className="px-3 py-1.5 rounded-full glass-light text-sm text-slate-300">Feature building</span>
               <span className="px-3 py-1.5 rounded-full glass-light text-sm text-slate-300">Bug fixing</span>
               <span className="px-3 py-1.5 rounded-full glass-light text-sm text-slate-300">Refactoring</span>

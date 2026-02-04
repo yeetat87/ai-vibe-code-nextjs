@@ -31,8 +31,8 @@ export default function FeaturePrompts() {
               </div>
             </div>
           </div>
-          <div className="order-1 lg:order-2 reveal-right">
-            <div className="flex items-center gap-2 text-cyan-400 text-xs tracking-widest mb-4">
+          <div className="order-1 lg:order-2 reveal-right text-center lg:text-left">
+            <div className="flex items-center gap-2 text-cyan-400 text-xs tracking-widest mb-4 justify-center lg:justify-start">
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                 <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
@@ -47,7 +47,7 @@ export default function FeaturePrompts() {
             <p className="text-slate-400 text-lg mb-6 leading-relaxed">
               200+ prompts that actually work. No more guessing what to say. Just copy the prompt, paste it, and watch the magic happen.
             </p>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
               <span className="px-3 py-1.5 rounded-full glass-light text-sm text-slate-300">Auth systems</span>
               <span className="px-3 py-1.5 rounded-full glass-light text-sm text-slate-300">API routes</span>
               <span className="px-3 py-1.5 rounded-full glass-light text-sm text-slate-300">UI components</span>
